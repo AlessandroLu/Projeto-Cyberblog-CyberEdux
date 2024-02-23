@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> {% block title %} {% endblock title %} </title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/post.css' %}" />
+  </head>
+  <body>
+    <header>
+      <a
+        class="btn btn-dark"
+        style="background-color: black; border-color: black"
+        href="/home"
+        role="Login"
+        ><h1>Cyber Blog</h1></a
+      >
+      <div align="center">
+        <a href="#"
+          ><i
+            class="bi bi-instagram"
+            style="font-size: x-large; color: white; padding: 0px 5px"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="bi bi-whatsapp"
+            style="font-size: x-large; color: white; padding: 0px 5px"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="bi bi-facebook"
+            style="font-size: x-large; color: white; padding: 0px 3px"
+          ></i
+        ></a>
+        <a href="#"
+          ><i class="bi bi-github" style="font-size: x-large; color: white"></i
+        ></a>
+        <br />
+        {% if request.user.is_authenticated %}
+        <div class="mb-2">
+          <span>Olá, {{ request.user.username }}</span>
+        </div>
+        <a class="btn btn-secondary" href="/publicar" role="Postar">Postar</a>
+        <a href="/deslogar" class="btn btn-secondary">Deslogar</a>
+        {% else %}
+        <a class="btn btn-secondary" href="/login" role="Login">Login</a>
+        {% endif %}
+      </div>
+    </header>
+    <nav class="nav nav-pills flex-column flex-sm-row justify-content-around">
+      <a
+        class="flex-sm-fill text-sm-center text-light fs-5 bg-dark nav-link ms-2 mb-2 mt-2"
+        aria-current="page"
+        href="/programação"
+        >Progamação</a
+      >
+      <a
+        class="flex-sm-fill text-sm-center text-light fs-5 bg-dark nav-link ms-2 mb-2 mt-2"
+        aria-current="page"
+        href="/cyber-segurança"
+        >Cyber Segurança</a
+      >
+      <a
+        class="flex-sm-fill text-sm-center text-light fs-5 bg-dark nav-link ms-2 mb-2 mt-2"
+        aria-current="page"
+        href="/vagas-de-emprego"
+        >Vagas de Emprego</a
+      >
+      <a
+        class="flex-sm-fill text-sm-center text-light fs-5 bg-dark nav-link ms-2 mb-2 mt-2"
+        aria-current="page"
+        href="/tecnologia"
+        >Tecnologia</a
+      >
+    </nav>
+    <div class="container-fluid">{% block conteudo %} {% endblock %}</div>
+    <footer>
+      <h6>© 2024 Cyber Blog - Todos os direitos reservados.</h6>
+      <h6>Desenvolvido por Alessandro</h6>
+    </footer>
+  </body>
+</html>

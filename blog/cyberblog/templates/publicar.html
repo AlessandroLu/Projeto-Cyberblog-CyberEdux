@@ -1,0 +1,79 @@
+{% extends "base.html" %} {% load static %} 
+
+{% block title %}Publicar{% endblock title %}
+
+{% block conteudo %}
+
+<div class="container-sm bg-secondary mt-3" style="border-radius: 15px">
+  <form
+    class="row g-3"
+    style="text-align: center; padding: 20px"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <h2>Fazer Publicação</h2>
+    <div>
+      <label for="titulo" class="form-label">Título</label>
+      <input type="text" class="form-control" name="titulo" />
+    </div>
+    <div>
+      <label for="subtitulo" class="form-label">Subtítulo</label>
+      <input type="text" class="form-control" name="subtitulo" />
+    </div>
+    <div>
+      <div>
+        <label for="autor">Autor</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          name="autor"
+        >
+          <option selected>Selecione um Autor</option>
+          <option value="Anônimo">Anônimo</option>
+          <option value="{{ request.user.username }}">{{ request.user.username }}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label for="categoria">Categoria</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="categoria"
+      >
+        <option selected>Selecione uma Categoria</option>
+        <option value="Vagas de Emprego">Vagas de Emprego</option>
+        <option value="Cyber Segurança">Cyber Segurança</option>
+        <option value="Programação">Programação</option>
+        <option value="Tecnologia">Tecnologia</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="conteudo" class="form-label">Digite o conteúdo do post</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        name="conteudo"
+      ></textarea>
+    </div>
+    <div class="col-12">
+      <label for="resumo" class="form-label">Digite um breve resumo</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        maxlength="200"
+        name="resumo"
+      ></textarea>
+    </div>
+    <div>
+      <label for="imagem">Escolha a imagem da capa:</label>
+      <input type="file" name="imagem" accept="image/png, image/jpeg" />
+    </div>
+    <button type="submit" class="btn btn-dark mb-3">Publicar</button>
+  </form>
+</div>
+
+{% endblock %}
