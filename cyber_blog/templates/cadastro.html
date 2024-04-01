@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body{
+        font-family: JetBrains Mono;
+      }
+    </style>
+  </head>
+  <body class="bg-black"> 
+    <div class="container p-4" style="display: flex; flex-direction: column; align-items: center;align-content: center; text-align: center;">
+      <div class="w-400 h-800 bg-secondary rounded mt-4 p-4">
+        <img
+        width="500px"
+        style="border-radius: 15px;"
+        src="https://www.shutterstock.com/image-photo/cybersecurity-privacy-concepts-protect-data-600nw-2268386621.jpg"
+      />
+      <h3 class="mt-2">Cadastro Usuário</h3>
+      <form style="text-align: center" method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Nome de Usuário</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" name="nome" />
+        </div>
+        {% comment %} {% if username_igual %}
+
+        Nome de Usuário ou Senha Incorretos!
+
+        {% endif %} {% endcomment %}
+        <div class="mb-3">
+          <label for="sobrenome" class="form-label">Sobrenome</label>
+          <input type="text" class="form-control" name="sobrenome" />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <input type="password" class="form-control" name="password" />
+        </div>
+
+        <button type="submit" class="btn btn-dark bt-lg">Criar Conta</button>
+        <div class="form-check mt-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Aceitar Termos e Condições
+          </label>
+        </div>
+        <h6 class="">
+          <a href="#" style="color: black"
+            >Clique aqui para ler os termos e Condições</a
+          >
+        </h6>
+      </form>
+      </div>
+    </div>
+  </body>
+</html>
